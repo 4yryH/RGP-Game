@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link href="./css/style.css" rel="stylesheet">
+  <link as="font" href="fonts/oswald/oswaldregular.woff" rel="preload">
+  <link as="font" href="fonts/oswald/oswaldregular.woff2" rel="preload">
+  <link as="font" href="fonts/arial/ArialRegular.woff" rel="preload">
+  <title>Хвост Судьбы: Легенда о Рыжем Коте</title>
+</head>
+<body class="page">
+
+<header class="page__header">
+  <h1 class="game-title">🐾 Хвост Судьбы: Легенда о Рыжем Коте</h1>
+</header>
+
+<section class="preamble">
+  <p class="preamble__text">Ты — рыжий кот по имени Огнехвост, живущий в старом викторианском городе, полном загадок,
+    скрытых магий и древних
+    тайн. Когда исчезает твоя подруга — серая кошка Луна, ты отправляешься в опасное путешествие, чтобы спасти её. По
+    мере продвижения выясняется, что Луна была похищена таинственным Котом-Теней — существом, которое охотится за душами
+    кошек, хранящих магический дар.</p>
+  <p class="preamble__text">Оказывается, ты один из последних котов-защитников Города Трёх Ветров — древнего ордена,
+    способного общаться с
+    духами, перемещаться между мирами и чувствовать силу Ветра. Чтобы спасти подругу, тебе придётся разгадывать загадки,
+    искать артефакты, вступать в союз с другими животными и сражаться с приспешниками Тени.</p>
+  <button class="button button__start">Начать приключение</button>
+</section>
+
+<section class="stats hidden">
+  <h2 class="stats__title visually-hidden">Характеристики</h2>
+  <p class="stats__item">
+    Имя: <strong class="stats__hero-name">Огнехвост</strong>
+  </p>
+  <p class="stats__item">
+    Храбрость: <span class="stats__hero-bravery">3</span>
+  </p>
+  <p class="stats__item">
+    Интуиция: <span class="stats__hero-intuition">2</span>
+  </p>
+  <p class="stats__item">
+    Магия: <span class="stats__hero-magic">1</span>
+  </p>
+  <p class="stats__item">
+    Инвентарь: <span class="stats__hero-inventory">Клочок шерсти Луны</span>
+  </p>
+  <p class="stats__item">
+    Здоровье: <span class="stats__hero-health">10</span>
+  </p>
+</section>
+
+<section class="story hidden">
+  <h2 class="story__title">Исчезновение</h2>
+  <p class="story__text">
+    Ты сидишь на крыше книжного магазина. Внизу мелькает Луна — серая кошка, твоя подруга. Она исчезает в переулке — и
+    вскоре раздаётся пронзительный крик. Ты срываешься вниз.
+  </p>
+  <p class="story__text">
+    Переулок пуст. Только след когтей и магический символ на стене. Внезапно появляется Кот-Тень — существо из другого
+    мира. Он говорит, что Луна теперь его пленница. Чтобы вернуть её, тебе нужно найти Три Знака Ветра.
+  </p>
+  <p class="story__text">
+    Он исчезает, оставив после себя клочок Луниной шерсти. Ты понимаешь, что путь будет полон опасностей и сражений.
+  </p>
+</section>
+
+<section class="choices hidden">
+  <h3 class="choices__title">Куда отправиться?</h3>
+  <ul class="choices__list">
+    <li class="choices__item">
+      <button class="button choices__button choices__button-line-1">
+        <strong>1.</strong> К сове Мудроклюву в старый парк — она знает всё о магии и порталах.
+      </button>
+    </li>
+    <li class="choices__item">
+      <button class="button choices__button choices__button-line-2">
+        <strong>2.</strong> Назад в книжный магазин — в старых книгах может быть ключ к Знакам Ветра.
+      </button>
+    </li>
+    <li class="choices__item">
+      <button class="button choices__button choices__button-line-3">
+        <strong>3.</strong> К Чёрному рынку крыс — они могут знать, где скрыт первый Знак.
+      </button>
+    </li>
+  </ul>
+</section>
+
+<section class="chapter chapter--story chapter--story-line-1 hidden">
+  <h2 class="chapter__sub-title">Путь к Мудроклюву</h2>
+  <p class="chapter__text">
+    Ты отправляешься в парк, где встречаешь мудрую сову. Она говорит, что один Знак Ветра охраняется древним
+    Котом-Тенью. Он не сдаётся без борьбы, и тебе предстоит с ним сразиться.
+  </p>
+  <button class="button button__continue-line-1-step-2">Вступить в бой</button>
+</section>
+<section class="chapter chapter--battle chapter--battle-line-1 hidden">
+  <h2 class="chapter__battle-title">Сражение с Котом-Тенью!</h2>
+  <div class="chapter__battle-enemy">
+    <h3 class="chapter__enemy-name">Кот-Тень</h3>
+    <p>Здоровье: <strong class="chapter__enemy-health">8</strong></p>
+    <p>Сила: <strong class="chapter__enemy-power">8</strong></p>
+  </div>
+  <p class="chapter__text">
+    Сражение начинается! Ты выбираешь действия:
+  </p>
+  <ul class="chapter__choices">
+    <li class="chapter__choice">
+      <button class="button chapter__choices-button">
+        <strong>1.</strong> Атаковать Кота-Тень с помощью храбрости.
+      </button>
+    </li>
+    <li class="chapter__choice">
+      <button class="button chapter__choices-button">
+        <strong>2.</strong> Защититься и восстановить немного здоровья.
+      </button>
+    </li>
+    <li class="chapter__choice">
+      <button class="button chapter__choices-button">
+        <strong>3.</strong> Использовать магию, если у тебя есть силы.
+      </button>
+    </li>
+  </ul>
+</section>
+
+<section class="chapter chapter--story chapter--story-line-2 hidden">
+  <h3 class="chapter__sub-title">Путь к Знаниям</h3>
+  <p class="chapter__text">
+    В книжном магазине ты находишь дневник старого мага-кота. Он описывает путь к первому Знаку — на Вершине Когтя.
+    В дневниках описывается, что охраняет его могучий и очень хитрый страж.
+  </p>
+  <button class="button button__continue button__continue-line-2-step-2">Отправиться на Вершину Когтя</button>
+</section>
+
+<section class="chapter chapter--battle chapter--battle-line-2 hidden">
+  <h2 class="chapter__title">Вершина Когтя</h2>
+  <h3 class="chapter__sub-title">Сражение с Лисицей-Стражем</h3>
+  <p class="chapter__text">
+    Ты поднимаешься на Вершину Когтя, где, по слухам, хранится последний Знак Ветра. Однако, охраняет его лисица-страж.
+    Она старается запутать тебя и может использовать свои ловкие атаки.
+  </p>
+  <div class="chapter__battle-enemy">
+    <h3 class="chapter__enemy-name">Лисица-Страж</h3>
+    <p>Здоровье: <strong class="chapter__enemy-health">10</strong></p>
+    <p>Сила: <strong class="chapter__enemy-power">8</strong></p>
+  </div>
+  <p class="chapter__text">
+    Ты готов к сражению на пути к Трём Знакам Ветра.
+  </p>
+  <ul class="chapter__choices">
+    <li class="chapter__choice">
+      <button class="button chapter__choices-button">
+        <strong>1.</strong> Атаковать Лисицу с помощью храбрости и силы.
+      </button>
+    </li>
+    <li class="chapter__choice">
+      <button class="button chapter__choices-button">
+        <strong>2.</strong> Использовать магию, чтобы создать иллюзию и сбить Лисицу с толку.
+      </button>
+    </li>
+    <li class="chapter__choice">
+      <button class="button chapter__choices-button">
+        <strong>3.</strong> Поговорить с Лисицей, чтобы найти способ договориться и пройти мимо неё.
+      </button>
+    </li>
+  </ul>
+</section>
+
+<section class="chapter chapter--story chapter--story-line-3 hidden">
+  <h3 class="chapter__sub-title">Выбор 3: Крысиные слухи</h3>
+  <p class="chapter__text">
+    Крысы соглашаются поделиться информацией за услугу: ты должен спасти их вожака из ловушки человека. В обмен они
+    укажут путь к подземному туннелю, ведущему к Знаку Ветра.
+  </p>
+  <button class="button button__continue button__continue-line-3-step-2">Спасти вожака из ловушки</button>
+</section>
+
+<section class="chapter chapter--story chapter--story-line-3-step-2 hidden">
+  <h3 class="chapter__sub-title">Выбор 3: Крысиные слухи</h3>
+  <p class="chapter__text">
+    Вожак спасён! Крысы проводят тебя к подземному туннелю, ведущему к Знаку Ветра.
+  </p>
+  <button class="button button__continue button__continue-line-3-step-3">Спуститься в подземелье</button>
+</section>
+
+<section class="chapter chapter--battle chapter--battle-line-3 hidden">
+  <h2 class="chapter__title">Подземелья</h2>
+  <h3 class="chapter__sub-title">Сражение с Тенью Сна</h3>
+  <p class="chapter__text">
+    Ты спускаешься в подземелья, где в темных уголках скрываются чудовища. Внезапно появляется Тень Сна — страшный
+    монстр, который питается страхом и сном. Его сила темнее, чем ты мог себе представить.
+  </p>
+  <div class="chapter__battle-enemy">
+    <h3 class="chapter__enemy-name">Тень Сна</h3>
+    <p>Здоровье: <strong class="chapter__enemy-health">12</strong></p>
+    <p>Сила: <strong class="chapter__enemy-power">8</strong></p>
+  </div>
+  <p class="chapter__text">
+    Ты понимаешь, что должен быть осторожным. У тебя есть три варианта действий:
+  </p>
+  <ul class="chapter__choices">
+    <li class="chapter__choice">
+      <button class="button chapter__choices-button">
+        <strong>1.</strong> Атаковать Тень Сна с помощью магии.
+      </button>
+    </li>
+    <li class="chapter__choice">
+      <button class="button chapter__choices-button">
+        <strong>2.</strong> Использовать Интуицию, чтобы уклониться от его ударов и нанести ответный удар.
+      </button>
+    </li>
+    <li class="chapter__choice">
+      <button class="button chapter__choices-button">
+        <strong>3.</strong> Применить предметы из инвентаря, чтобы ослабить противника (например, зелье силы).
+      </button>
+    </li>
+  </ul>
+</section>
+
+
+<section class="ending hidden">
+  <h2 class="ending__title visually-hidden">Финал</h2>
+  <p class="ending__text">
+    Собрав Три Знака Ветра, ты возвращаешься к магическому символу. Портал открывается. Ты проходишь через Тень и
+    находишь Луну в капсуле сна. Применив силу
+    всех трёх Знаков, ты разрушаешь заклятие и спасешь её.
+  </p>
+  <p class="ending__text"><strong>Конец. Но магия Ветра продолжает жить в тебе…</strong></p>
+</section>
+<script src="scripts/preamble.js"></script>
+<script src="scripts/line-1.js"></script>
+<script src="scripts/line-2.js"></script>
+<script src="scripts/line-3.js"></script>
+</body>
+</html>
