@@ -34,21 +34,25 @@
     Имя: <strong class="stats__hero-name">Огнехвост</strong>
   </p>
   <p class="stats__item">
-    Храбрость: <span class="stats__hero-bravery">3</span>
-  </p>
-  <p class="stats__item">
-    Интуиция: <span class="stats__hero-intuition">2</span>
-  </p>
-  <p class="stats__item">
-    Магия: <span class="stats__hero-magic">1</span>
-  </p>
-  <p class="stats__item">
-    Инвентарь: <span class="stats__hero-inventory">Клочок шерсти Луны</span>
-  </p>
-  <p class="stats__item">
     Здоровье: <span class="stats__hero-health">10</span>
   </p>
+  <p class="stats__item">
+    Сила: <span class="stats__hero-strenght">3</span>
+  </p>
+  <p class="stats__item">
+    Магия: <span class="stats__hero-magic">2</span>
+  </p>
+  <p class="stats__item">
+    Хитрость: <span class="stats__hero-cunning">10</span>
+  </p>
+  <section class="inventory">
+    <h2 class="inventory__title">Рюкзак</h2>
+    <ul class="inventory__list" id="inventory-list">
+    </ul>
+  </section>
+  <button class="button button__restart">Начать заново</button>
 </section>
+
 
 <section class="story hidden">
   <h2 class="story__title">Исчезновение</h2>
@@ -121,6 +125,9 @@
       </button>
     </li>
   </ul>
+  <button class="button button__after-battle hidden button__after-battle-line-1">
+    Продолжить
+  </button>
 </section>
 
 <section class="chapter chapter--story chapter--story-line-2 hidden">
@@ -164,10 +171,13 @@
       </button>
     </li>
   </ul>
+  <button class="button button__after-battle hidden button__after-battle-line-2">
+    Продолжить
+  </button>
 </section>
 
 <section class="chapter chapter--story chapter--story-line-3 hidden">
-  <h3 class="chapter__sub-title">Выбор 3: Крысиные слухи</h3>
+  <h3 class="chapter__sub-title">Крысиные слухи</h3>
   <p class="chapter__text">
     Крысы соглашаются поделиться информацией за услугу: ты должен спасти их вожака из ловушки человека. В обмен они
     укажут путь к подземному туннелю, ведущему к Знаку Ветра.
@@ -176,7 +186,7 @@
 </section>
 
 <section class="chapter chapter--story chapter--story-line-3-step-2 hidden">
-  <h3 class="chapter__sub-title">Выбор 3: Крысиные слухи</h3>
+  <h3 class="chapter__sub-title">Крысиные слухи</h3>
   <p class="chapter__text">
     Вожак спасён! Крысы проводят тебя к подземному туннелю, ведущему к Знаку Ветра.
   </p>
@@ -201,22 +211,30 @@
   <ul class="chapter__choices">
     <li class="chapter__choice">
       <button class="button chapter__choices-button">
-        <strong>1.</strong> Атаковать Тень Сна с помощью магии.
+        <strong>1.</strong> Атаковать Тень Сна с помощью острых когтей.
       </button>
     </li>
     <li class="chapter__choice">
       <button class="button chapter__choices-button">
-        <strong>2.</strong> Использовать Интуицию, чтобы уклониться от его ударов и нанести ответный удар.
+        <strong>2.</strong> Использовать хитрость, чтобы уклониться от его ударов и восстановить
+        немного здоровья.
       </button>
     </li>
     <li class="chapter__choice">
       <button class="button chapter__choices-button">
-        <strong>3.</strong> Применить предметы из инвентаря, чтобы ослабить противника (например, зелье силы).
+        <strong>3.</strong> Атаковать Тень Сна с помощью магии.
       </button>
     </li>
   </ul>
+  <button class="button button__after-battle hidden button__after-battle-line-3">
+    Продолжить
+  </button>
 </section>
 
+<section class="log hidden">
+  <h2 class="log__title">Ход событий</h2>
+  <div class="log__messages" id="log-messages"></div>
+</section>
 
 <section class="ending hidden">
   <h2 class="ending__title visually-hidden">Финал</h2>
@@ -227,9 +245,15 @@
   </p>
   <p class="ending__text"><strong>Конец. Но магия Ветра продолжает жить в тебе…</strong></p>
 </section>
+
 <script src="scripts/preamble.js"></script>
 <script src="scripts/line-1.js"></script>
 <script src="scripts/line-2.js"></script>
 <script src="scripts/line-3.js"></script>
+<script src="scripts/utils.js"></script>
+<script src="scripts/battle.js"></script>
+<script src="scripts/inventory.js"></script>
+<script src="scripts/ending.js"></script>
+<script src="scripts/restart.js"></script>
 </body>
 </html>

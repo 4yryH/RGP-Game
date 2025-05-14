@@ -1,3 +1,6 @@
+/**
+ Вступление
+ */
 const startButton = document.querySelector('.button__start');
 const preamble = document.querySelector('.preamble');
 const stats = document.querySelector('.stats');
@@ -17,4 +20,5 @@ function showGameUI() {
 startButton.addEventListener('click', (evt) => {
   evt.preventDefault();
   showGameUI();
+  updateInventoryUI(); // первоначальное обновление инвентаря
 });
