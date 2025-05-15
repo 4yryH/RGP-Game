@@ -1,12 +1,21 @@
+@import (reference) '../global/variables.less'; // что бы webstorm не ругался на переменные
+
 .page {
   display: flex;
   flex-direction: column;
-  margin: 24px auto;
+  margin: 0 auto;
   padding: 24px;
   max-width: 1024px;
   width: 100%;
+  background-color: @color-bg-main;
 }
 
 .page__header {
   text-align: center;
+}
+
+.game-title {
+  font-family: @font-second;
+  font-size: 32px;
+  font-weight: 700;
 }

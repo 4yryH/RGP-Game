@@ -1,28 +1,32 @@
 @import (reference) '../global/variables.less'; // что бы webstorm не ругался на переменные
 
-.preamble {
+.inventory__title {
+  font-family: @font-second;
+  font-size: 21px;
+  font-weight: 700;
+  color: @color-blood;
+}
+
+.inventory__list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  max-width: 800px;
-  width: 100%;
-  padding: 24px 8px;
   gap: 8px;
+  margin-top: 8px;
 }
 
-.preamble__text {
-  font-size: 21px;
+.inventory__list li {
+  font-weight: 700;
+  font-size: 18px;
+  color: @color-wind;
 }
 
-.preamble__button-start {
+.inventory__item {
   background-color: @color-text-main;
   color: @color-bg-main;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 12px;
   font-family: @font-second;
-  padding: 14px 28px;
+  padding: 6px 8px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -30,7 +34,6 @@
   transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-top: 24px;
 
   &:hover {
     background-color: @color-hover;

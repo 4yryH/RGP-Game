@@ -209,9 +209,15 @@ function endBattle(victory) {
   if (currentEnemy.name === 'Лисица-Страж') completedLines.line2 = true;
   if (currentEnemy.name === 'Тень Сна') completedLines.line3 = true;
 
-  // Показываем кнопку другой линии
-  const nextBtn = currentEnemy.element.querySelector('.button__after-battle');
-  if (nextBtn) nextBtn.classList.remove('hidden');
+  // Показываем кнопку продолжить что бы вернуться на выбор другой линии
+  if (victory) {
+    const nextBtn = currentEnemy.element.querySelector('.button__after-battle');
+    if (nextBtn) nextBtn.classList.remove('hidden');
+  } else {
+    // При поражении кнопку рестарта
+    const restartBtn = currentEnemy.element.querySelector('.button__restart');
+    if (restartBtn) restartBtn.classList.remove('hidden');
+  }
 
   disableButtons(currentEnemy.element);
 
@@ -229,13 +235,21 @@ function disableButtons(section) {
   buttons.forEach(btn => btn.disabled = true);
 }
 
+// для стилизации логов
+function highlightLog(text) {
+  return text
+    .replace(/(\d+)\s+урона/g, '<span class="log--damage">$1 урона</span>')
+    .replace(/(\d+)\s+здоровья/g, '<span class="log--heal">$1 здоровья</span>')
+    .replace(/магии\s*\(\+\d+\sMP\)/g, '<span class="log--magic">$&</span>')
+    .replace(/Знак Ветра/i, '<span class="log--wind">Знак Ветра</span>');
+}
+
 //log
 function log(text) {
   const p = document.createElement('p');
-  p.textContent = text;
-  logMessages.appendChild(p);
+  p.innerHTML = highlightLog(text); //
 
-  // scroll
-  const logBox = logMessages;
+  const logBox = document.getElementById('log-messages');
+  logBox.appendChild(p);
   logBox.scrollTop = logBox.scrollHeight;
 }

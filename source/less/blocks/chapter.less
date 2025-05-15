@@ -1,3 +1,5 @@
+@import (reference) '../global/variables.less'; // что бы webstorm не ругался на переменные
+
 .chapter {
   display: flex;
   flex-direction: column;
@@ -7,13 +9,57 @@
   max-width: 800px;
   width: 100%;
   padding: 24px 8px;
-  position: relative;
 }
 
-.chapter__battle-enemy {
-  position: absolute;
-  top: -150px;
-  right: 0;
+.chapter__sub-title {
+  font-family: @font-second;
+  font-size: 32px;
+}
+
+.chapter__battle-title {
+  font-family: @font-second;
+  font-size: 32px;
+}
+
+.chapter__text {
+  font-size: 21px;
+}
+
+.button__continue-line-1-step-2 {
+  width: 100%;
+  background-color: @color-text-main;
+  color: @color-bg-main;
+  font-weight: 700;
+  font-size: 12px;
+  font-family: @font-second;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(208, 157, 34, 0.3);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  &:hover {
+    background-color: @color-hover;
+    box-shadow: 0 6px 14px rgba(255, 223, 102, 0.3);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    background-color: @color-pressed;
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  &:disabled {
+    background-color: @color-disabled;
+    color: #999;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
 }
 
 .chapter__choices {
@@ -25,4 +71,104 @@
 
 .chapter__choices-button {
   width: 100%;
+  background-color: @color-text-main;
+  color: @color-bg-main;
+  font-weight: 700;
+  font-size: 12px;
+  font-family: @font-second;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(208, 157, 34, 0.3);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  &:hover {
+    background-color: @color-hover;
+    box-shadow: 0 6px 14px rgba(255, 223, 102, 0.3);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    background-color: @color-pressed;
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  &:disabled {
+    background-color: @color-disabled;
+    color: #999;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+.chapter__battle-enemy {
+  text-align: center;
+}
+
+.chapter__enemy-name {
+  font-weight: 700;
+  font-size: 28px;
+  text-decoration: underline;
+  text-transform: uppercase;
+  color: @color-blood;
+}
+
+.chapter__battle-enemy p {
+  font-family: @font-second;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.chapter__enemy- {
+  &health {
+    font-weight: 700;
+    color: @color-heal;
+  }
+
+  &power {
+    font-weight: 700;
+    color: @color-blood;
+  }
+}
+
+.button__after-battle, .button__continue {
+  width: 100%;
+  background-color: @color-text-main;
+  color: @color-bg-main;
+  font-weight: 700;
+  font-size: 12px;
+  font-family: @font-second;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(208, 157, 34, 0.3);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  &:hover {
+    background-color: @color-hover;
+    box-shadow: 0 6px 14px rgba(255, 223, 102, 0.3);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    background-color: @color-pressed;
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  &:disabled {
+    background-color: @color-disabled;
+    color: #999;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
 }

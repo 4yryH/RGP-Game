@@ -21,6 +21,6 @@ function checkVictoryCondition() {
       if (ending) {
         ending.classList.remove('hidden');
       }
-    }, 1500);
+    }, 3000);
   }
 }
