@@ -1,6 +1,10 @@
 /**
  Логика отображения шагов в 3 линии сюжета
  */
+import { disableCompletedChoices, switchSections } from './ui.js';
+import { choices, story } from './preamble.js';
+import { startBattle } from './battle.js';
+
 const buttonThirdLine = document.querySelector('.choices__button-line-3');
 const buttonThirdLineStep2 = document.querySelector('.button__continue-line-3-step-2');
 const buttonThirdLineStep3 = document.querySelector('.button__continue-line-3-step-3');

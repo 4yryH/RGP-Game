@@ -1,6 +1,10 @@
 /**
  Логика отображения шагов в 1 линии сюжета
  */
+import { disableCompletedChoices, switchSections } from './ui.js';
+import { choices, story } from './preamble.js';
+import { startBattle } from './battle.js';
+
 const buttonFirstLine = document.querySelector('.choices__button-line-1');
 const buttonFirstLineStep2 = document.querySelector('.button__continue-line-1-step-2');
 const chapterFirstLine = document.querySelector('.chapter--story-line-1');
@@ -9,6 +13,7 @@ const buttonContinue1 = document.querySelector('.button__after-battle-line-1');
 
 // Выбор пути к сове, скрываем story с кнопками и показываем дальше сюжет
 buttonFirstLine.addEventListener('click', (evt) => {
+  console.log(document.querySelector('.choices__button-line-1'));
   evt.preventDefault();
   switchSections(story, chapterFirstLine);
   choices.classList.toggle('hidden');

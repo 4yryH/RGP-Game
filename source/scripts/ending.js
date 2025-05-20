@@ -2,9 +2,12 @@
  переход к финальной сцене, когда собраны все три знака
  */
 
+import {inventory} from "./game-state.js";
+import {log} from "./log.js";
+
 const ending = document.querySelector('.ending');
 
-function checkVictoryCondition() {
+export function checkVictoryCondition() {
   if (
     inventory['wind-sign-1'] &&
     inventory['wind-sign-2'] &&

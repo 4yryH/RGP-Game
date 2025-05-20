@@ -1,15 +1,18 @@
 /**
  Вступление
  */
-const startButton = document.querySelector('.button__start');
-const preamble = document.querySelector('.preamble');
+
+import { updateInventoryUI } from './ui.js';
+
+export const startButton = document.querySelector('.button__start');
+export const preamble = document.querySelector('.preamble');
 const stats = document.querySelector('.stats');
-const story = document.querySelector('.story');
-const choices = document.querySelector('.choices');
+export const story = document.querySelector('.story');
+export const choices = document.querySelector('.choices');
 
 // Функция на старте скрыть предисловие,
 // показать первую главу, действия, характеристику героя
-function showGameUI() {
+export function showGameUI() {
   preamble.classList.add('hidden');
   stats.classList.remove('hidden');
   story.classList.remove('hidden');

@@ -1,6 +1,13 @@
 /**
  Перезапуск игры
  */
+import {logMessages} from './battle.js';
+import {updateInventoryUI, updateHealthDisplay} from './ui.js';
+import {preamble} from './preamble.js';
+import {hero, inventory, completedLines, enemies} from './game-state.js';
+import {log} from './log.js';
+
+const inventorySection = document.querySelector(".inventory");
 
 document.querySelectorAll('.button__restart').forEach((restartButton) => {
   restartButton.addEventListener('click', () => {

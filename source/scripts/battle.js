@@ -1,80 +1,25 @@
 /**
  Здесь вся логика боя, характеристики персонажей и получение награды за бой
  */
-const heroHealthEl = document.querySelector('.stats__hero-health');
-const heroMagicEl = document.querySelector('.stats__hero-magic');
-const logMessages = document.querySelector('.log__messages');
+
+import {updateInventoryUI, updateHealthDisplay} from './ui.js';
+import {checkVictoryCondition} from "./ending.js";
+import {hero, inventory, enemies, completedLines, getCurrentEnemy, setCurrentEnemy } from './game-state.js';
+import {log} from './log.js';
+
+export const logMessages = document.querySelector('.log__messages');
 
 let isPlayerTurn = true; // для блока кнопок
-
-// здесь хранятся линии, на которых был бой, при завершении боя будет прилетать true
-const completedLines = {
-  line1: false,
-  line2: false,
-  line3: false
-};
-
-// хар-ка героя
-const hero = {
-  health: 10,
-  strength: 3,
-  magic: 2,
-  cunning: 1,
-};
-
-// хар-ки противников
-const enemies = {
-  'cat-shadow': {
-    name: 'Кот-Тень',
-    health: 8,
-    maxHealth: 8,
-    power: 2,
-    element: chapterFirstLineBattle
-  },
-  'fox-guard': {
-    name: 'Лисица-Страж',
-    health: 10,
-    maxHealth: 12,
-    power: 3,
-    element: chapterSecondLineBattle
-  },
-  'sleep-shadow': {
-    name: 'Тень Сна',
-    health: 12,
-    maxHealth: 12,
-    power: 4,
-    element: chapterThirdLineBattle
-  }
-};
-
-// текущий противник
-let currentEnemy = null;
-
-// Рендер здоровья и магии.
-// Да называется она про здоровье, но потом понял что и магию надо обновлять
-function updateHealthDisplay() {
-  if (heroHealthEl) {
-    heroHealthEl.textContent = hero.health;
-  }
-  if (heroMagicEl) {
-    heroMagicEl.textContent = hero.magic;
-  }
-
-  if (!currentEnemy) return;
-
-  const healthEls = currentEnemy.element.querySelectorAll('.chapter__enemy-health');
-  healthEls.forEach(el => el.textContent = currentEnemy.health);
-}
 
 // действия в бою
 // Атака
 function attack() {
   const damage = hero.strength + Math.floor(Math.random() * 3);
-  currentEnemy.health -= damage;
-  log(`Ты атакуешь ${currentEnemy.name} и наносишь ${damage} урона.`);
+  getCurrentEnemy().health -= damage;
+  log(`Ты атакуешь ${getCurrentEnemy().name} и наносишь ${damage} урона.`);
   updateHealthDisplay();
 
-  if (currentEnemy.health <= 0) {
+  if (getCurrentEnemy().health <= 0) {
     endBattle(true);
   } else {
     setTimeout(enemyTurn, 1000);
@@ -99,12 +44,12 @@ function useMagic() {
     return;
   }
   const damage = 4 + Math.floor(Math.random() * 3);
-  currentEnemy.health -= damage;
+  getCurrentEnemy().health -= damage;
   hero.magic -= 1;
   log(`Ты используешь магию и наносишь ${damage} урона.`);
   updateHealthDisplay();
 
-  if (currentEnemy.health <= 0) {
+  if (getCurrentEnemy().health <= 0) {
     endBattle(true);
   } else {
     setTimeout(enemyTurn, 1000);
@@ -113,9 +58,9 @@ function useMagic() {
 
 // ход противника
 function enemyTurn() {
-  const damage = currentEnemy.power + Math.floor(Math.random() * 2);
+  const damage = getCurrentEnemy().power + Math.floor(Math.random() * 2);
   hero.health -= damage;
-  log(`${currentEnemy.name} атакует и наносит тебе ${damage} урона.`);
+  log(`${getCurrentEnemy().name} атакует и наносит тебе ${damage} урона.`);
   updateHealthDisplay();
 
   if (hero.health <= 0) {
@@ -128,25 +73,25 @@ function enemyTurn() {
 }
 
 // начать бой
-function startBattle(enemyId) {
+export function startBattle(enemyId) {
   document.getElementById('log-messages').innerHTML = ''; // чистим лог
   document.querySelector('.log').classList.remove('hidden'); // показываем лог
 
   // подгружаем хар-ку противника
-  currentEnemy = enemies[enemyId];
-
+  // getCurrentEnemy() = enemies[enemyId];
+  setCurrentEnemy(enemies[enemyId]);
   // отображение здоровья и магии
   updateHealthDisplay();
 
   // Клонируем кнопки, чтобы удалить старые обработчики, иначе после первого боя они не работают
-  const oldButtons = currentEnemy.element.querySelectorAll('.chapter__choices-button');
+  const oldButtons = getCurrentEnemy().element.querySelectorAll('.chapter__choices-button');
   oldButtons.forEach((btn) => {
     const newBtn = btn.cloneNode(true);
     btn.parentNode.replaceChild(newBtn, btn);
   });
 
   // Навешиваем новые обработчики
-  const newButtons = currentEnemy.element.querySelectorAll('.chapter__choices-button');
+  const newButtons = getCurrentEnemy().element.querySelectorAll('.chapter__choices-button');
 
   // кнопка атаки
   newButtons[0].addEventListener('click', () => {
@@ -177,49 +122,49 @@ function startBattle(enemyId) {
   updateInventoryUI();
 
   // начинаем писать лог
-  log(`Начинается бой с ${currentEnemy.name}!`);
+  log(`Начинается бой с ${getCurrentEnemy().name}!`);
 }
 
 // конец боя
 function endBattle(victory) {
   if (victory) {
-    log(`🎉 Ты победил ${currentEnemy.name}!`);
+    log(`🎉 Ты победил ${getCurrentEnemy().name}!`);
 
-    // Выдача знака за победу, положится в инвентарь в inventory.js
-    if (currentEnemy.name === 'Кот-Тень') {
+    // Выдача знака за победу, положится в инвентарь в game-state.js
+    if (getCurrentEnemy().name === 'Кот-Тень') {
       inventory['wind-sign-1'] = true;
       log('Ты получил 🌬 Знак Ветра I!');
     }
-    if (currentEnemy.name === 'Лисица-Страж') {
+    if (getCurrentEnemy().name === 'Лисица-Страж') {
       inventory['wind-sign-2'] = true;
       log('Ты получил 🌬 Знак Ветра II!');
     }
-    if (currentEnemy.name === 'Тень Сна') {
+    if (getCurrentEnemy().name === 'Тень Сна') {
       inventory['wind-sign-3'] = true;
       log('Ты получил 🌬 Знак Ветра III!');
     }
 
     updateInventoryUI();
   } else {
-    log(`💀 Ты пал в бою с ${currentEnemy.name}...`);
+    log(`💀 Ты пал в бою с ${getCurrentEnemy().name}...`);
   }
 
   // отметка линии, на которой был бой
-  if (currentEnemy.name === 'Кот-Тень') completedLines.line1 = true;
-  if (currentEnemy.name === 'Лисица-Страж') completedLines.line2 = true;
-  if (currentEnemy.name === 'Тень Сна') completedLines.line3 = true;
+  if (getCurrentEnemy().name === 'Кот-Тень') completedLines.line1 = true;
+  if (getCurrentEnemy().name === 'Лисица-Страж') completedLines.line2 = true;
+  if (getCurrentEnemy().name === 'Тень Сна') completedLines.line3 = true;
 
   // Показываем кнопку продолжить что бы вернуться на выбор другой линии
   if (victory) {
-    const nextBtn = currentEnemy.element.querySelector('.button__after-battle');
+    const nextBtn = getCurrentEnemy().element.querySelector('.button__after-battle');
     if (nextBtn) nextBtn.classList.remove('hidden');
   } else {
     // При поражении кнопку рестарта
-    const restartBtn = currentEnemy.element.querySelector('.button__restart');
+    const restartBtn = getCurrentEnemy().element.querySelector('.button__restart');
     if (restartBtn) restartBtn.classList.remove('hidden');
   }
 
-  disableButtons(currentEnemy.element);
+  disableButtons(getCurrentEnemy().element);
 
   // меняем, иначе последнее значение false и кнопки не работают после первого боя
   isPlayerTurn = true;
@@ -235,21 +180,6 @@ function disableButtons(section) {
   buttons.forEach(btn => btn.disabled = true);
 }
 
-// для стилизации логов
-function highlightLog(text) {
-  return text
-    .replace(/(\d+)\s+урона/g, '<span class="log--damage">$1 урона</span>')
-    .replace(/(\d+)\s+здоровья/g, '<span class="log--heal">$1 здоровья</span>')
-    .replace(/магии\s*\(\+\d+\sMP\)/g, '<span class="log--magic">$&</span>')
-    .replace(/Знак Ветра/i, '<span class="log--wind">Знак Ветра</span>');
-}
 
-//log
-function log(text) {
-  const p = document.createElement('p');
-  p.innerHTML = highlightLog(text); //
 
-  const logBox = document.getElementById('log-messages');
-  logBox.appendChild(p);
-  logBox.scrollTop = logBox.scrollHeight;
-}
+

@@ -1,6 +1,10 @@
 /**
  Логика отображения шагов в 2 линии сюжета
  */
+import { disableCompletedChoices, switchSections } from './ui.js';
+import { choices, story } from './preamble.js';
+import { startBattle } from './battle.js';
+
 const buttonSecondLine = document.querySelector('.choices__button-line-2');
 const buttonSecondLineStep2 = document.querySelector('.button__continue-line-2-step-2');
 const chapterSecondLine = document.querySelector('.chapter--story-line-2');
