@@ -24,7 +24,3 @@ npm start
 ```bash
 npm run build
 ```
-
-Проверь стиль кода и форматирование:
-
-npm test
